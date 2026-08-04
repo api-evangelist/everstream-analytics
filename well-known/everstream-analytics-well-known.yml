@@ -1,0 +1,115 @@
+generated: '2026-08-04'
+method: searched
+source: live probes of every Everstream Analytics host discovered via certificate transparency
+notes: 'Everstream Analytics publishes no /.well-known/ discovery surface on its marketing
+  site (www.everstream.ai), its application hosts (us1/eu1.apps.everstream.ai) or its
+  integration host (int.us1.apps.everstream.ai). The only /.well-known/ documents served
+  anywhere on the everstream.ai estate belong to m365-mcp.everstream.ai, a Microsoft
+  365 MCP relay (RFC 9728 protected-resource metadata + RFC 8414 authorization-server
+  metadata). Those documents are real and are recorded verbatim below, but they describe
+  Microsoft Graph scopes for an internal productivity tool — they are NOT metadata for
+  the Everstream supply chain platform API. portal.everstream.ai is a Pylon single-page
+  app that answers HTTP 200 with an HTML shell for every path, including every
+  /.well-known/* path; all of its responses are recorded as false positives and rejected.'
+hosts_probed:
+- https://www.everstream.ai
+- https://us1.apps.everstream.ai
+- https://int.us1.apps.everstream.ai
+- https://knowledge.everstream.ai
+- https://portal.everstream.ai
+- https://m365-mcp.everstream.ai
+documents:
+- host: https://m365-mcp.everstream.ai
+  path: /.well-known/oauth-authorization-server
+  status: 200
+  content_type: application/json
+  file: everstream-analytics-m365-mcp-oauth-authorization-server.json
+  spec: RFC 8414
+  note: Authorization server metadata for the Microsoft 365 MCP relay; issuer is the
+    MCP host itself, authorization_code + refresh_token grants, PKCE S256, public
+    clients (token_endpoint_auth_methods_supported = none).
+- host: https://m365-mcp.everstream.ai
+  path: /.well-known/oauth-protected-resource
+  status: 200
+  content_type: application/json
+  file: everstream-analytics-m365-mcp-oauth-protected-resource.json
+  spec: RFC 9728
+  note: Protected-resource metadata declaring https://m365-mcp.everstream.ai/mcp as
+    the resource. scopes_supported are Microsoft Graph scopes (Mail.*, Calendars.*,
+    Files.*, Chat.*, Team*, Sites.*), not Everstream platform scopes.
+- host: https://riskpulse-prod.us.auth0.com
+  path: /.well-known/openid-configuration
+  status: 200
+  content_type: application/json
+  file: everstream-analytics-auth0-openid-configuration.json
+  spec: OpenID Connect Discovery 1.0
+  note: 'Not served from an everstream.ai host. This is the Auth0 tenant that fronts
+    the Everstream customer application: app.us1.apps.everstream.ai 302-redirects to
+    https://riskpulse-prod.us.auth0.com/authorize with audience https://maglev-prod/api.
+    Recorded because it is the discovery document for the identity layer in front of
+    the platform API.'
+- host: https://m365-mcp.everstream.ai
+  path: /.well-known/agent-card.json
+  status: 404
+- host: https://m365-mcp.everstream.ai
+  path: /.well-known/agent.json
+  status: 404
+- host: https://www.everstream.ai
+  path: /.well-known/security.txt
+  status: 404
+- host: https://www.everstream.ai
+  path: /.well-known/openid-configuration
+  status: 404
+- host: https://www.everstream.ai
+  path: /.well-known/oauth-authorization-server
+  status: 404
+- host: https://www.everstream.ai
+  path: /.well-known/api-catalog
+  status: 404
+- host: https://www.everstream.ai
+  path: /.well-known/ai-plugin.json
+  status: 404
+- host: https://www.everstream.ai
+  path: /.well-known/agent-card.json
+  status: 404
+- host: https://www.everstream.ai
+  path: /.well-known/agent.json
+  status: 404
+- host: https://us1.apps.everstream.ai
+  path: /.well-known/security.txt
+  status: 404
+- host: https://us1.apps.everstream.ai
+  path: /.well-known/agent-card.json
+  status: 404
+- host: https://us1.apps.everstream.ai
+  path: /.well-known/agent.json
+  status: 404
+- host: https://knowledge.everstream.ai
+  path: /.well-known/security.txt
+  status: 404
+- host: https://knowledge.everstream.ai
+  path: /.well-known/agent-card.json
+  status: 404
+- host: https://knowledge.everstream.ai
+  path: /.well-known/agent.json
+  status: 404
+- host: https://knowledge.everstream.ai
+  path: /llms.txt
+  status: 200
+  content_type: text/plain
+  bytes: 39
+  note: 'Present but effectively empty — the body is the single line "# Everstream
+    Analytics Knowledge Base". A Pylon-generated placeholder, not a usable llms.txt.
+    /llms-full.txt returns 404 and /sitemap.xml is an empty urlset, because knowledge
+    base articles are gated behind customer authentication.'
+- host: https://portal.everstream.ai
+  path: /.well-known/*
+  status: 200
+  rejected: true
+  reason: SPA catch-all — returns an identical 12,991-byte HTML shell for every path
+    including /openapi.json, /llms.txt and /.well-known/agent-card.json. Not a real
+    discovery surface.
+x-evidence:
+  fetched: '2026-08-04'
+  subdomain_source: certificate transparency (api.certspotter.com, everstream.ai +
+    subdomains)

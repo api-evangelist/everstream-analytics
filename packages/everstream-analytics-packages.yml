@@ -1,0 +1,41 @@
+generated: '2026-08-04'
+method: searched
+source: public package registry searches + the Everstream Analytics GitHub organization
+notes: 'No first-party Everstream Analytics client library exists in any public package
+  registry, and the company''s GitHub organization publishes zero public repositories.
+  This is a recorded negative, not an omission — no SDKs pointer is wired in apis.yml
+  because there is no SDK to point at.'
+packages: []
+registries_searched:
+- registry: npm
+  query: everstream
+  result: no first-party package (0 matches attributable to Everstream Analytics)
+- registry: pypi
+  query: everstream
+  result: 404 — no project
+- registry: github
+  org: https://github.com/Everstream-Analytics
+  result: 'organization exists (created 2026-03-23, name "Everstream Analytics") with
+    public_repos = 0'
+- registry: maven-central
+  result: not found
+- registry: nuget
+  result: not found
+- registry: pkg.go.dev
+  result: not found
+- registry: rubygems
+  result: not found
+- registry: packagist
+  result: not found
+- registry: crates.io
+  result: not found
+- registry: postman
+  query: everstream
+  result: 0 public workspaces, collections, APIs or specifications
+gaps:
+- No official client SDK in any language.
+- No CLI.
+- No public code samples or quickstart repository.
+x-evidence:
+  fetched: '2026-08-04'
+  github_org_api: https://api.github.com/orgs/Everstream-Analytics

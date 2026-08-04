@@ -1,0 +1,68 @@
+generated: '2026-08-04'
+method: searched
+source: everstream.ai FAQ, service agreement and terms pages + live probes
+versioning:
+  scheme: null
+  current: null
+  docs: null
+  evidence: No public versioning policy for the platform API.
+deprecation:
+  policy_url: null
+  sunset_header: unknown
+  evidence: No deprecation policy, no RFC 8594 Sunset/Deprecation header documentation.
+changelog:
+  url: null
+  evidence: 'No public product or API changelog. Product news and release notes are
+    published inside the customer community portal (portal.usepylon.com/everstream-analytics)
+    and the knowledge base, both of which require customer authentication. The public
+    /blog/ and /insights/ feeds are market commentary, not release notes.'
+status_page:
+  url: null
+  evidence: 'Probed and NOT found. everstream.statuspage.io and everstreamanalytics.statuspage.io
+    both resolve to Atlassian''s Statuspage marketing site (title "Real-Time Incident
+    Communication with Statuspage"), not a tenant — rejected as false positives.
+    everstream.instatus.com is a real status page but it belongs to Everstream Solutions
+    LLC (everstream.net), the unrelated US fiber network operator — title "Everstream
+    - Network Operations - Status". status.everstream.ai does not resolve.'
+sla:
+  url: https://www.everstream.ai/everstream-analytics-service-agreement/
+  uptime_target: null
+  support_response:
+    severity_a_initial_response: under 2 hours
+    coverage: 24/5 global support (Europe and Asia support centres) plus 24/7 self-serve
+      AI chatbot
+    source: https://www.everstream.ai/company/everstream-analytics-frequently-asked-questions-faqs/
+  evidence: A service agreement page is published, but no uptime commitment or credit
+    schedule is stated publicly. The response-time figure is a support SLA from the
+    published FAQ, not an API availability SLA.
+support:
+  channels:
+  - kind: knowledge_base
+    url: https://knowledge.everstream.ai/
+    public: partial
+    note: Homepage is public; articles require customer authentication.
+  - kind: customer_portal
+    url: https://portal.usepylon.com/everstream-analytics
+    public: false
+  - kind: service_desk
+    url: https://help.everstream.ai/
+    public: false
+    note: Redirects to an Atlassian Jira Service Management customer portal login.
+  - kind: contact
+    url: https://www.everstream.ai/company/contact-us/
+    public: true
+deprecated_operations: []
+legal:
+- kind: terms
+  url: https://www.everstream.ai/terms-and-conditions/
+- kind: service_agreement
+  url: https://www.everstream.ai/everstream-analytics-service-agreement/
+- kind: privacy
+  url: https://www.everstream.ai/privacy-policy/
+gaps:
+- No public status page for the Everstream Analytics platform.
+- No public API changelog or release notes.
+- No published deprecation or versioning policy.
+- No published uptime SLA.
+x-evidence:
+  fetched: '2026-08-04'

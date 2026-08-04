@@ -1,0 +1,160 @@
+generated: '2026-08-04'
+method: searched
+source: everstream.ai published pages plus live protocol probes of the everstream.ai
+  host estate
+standards:
+- id: soc2-type2
+  conforms: true
+  evidence: 'Everstream Analytics published an article stating it completed a SOC 2
+    Type 2 audit in March after a nine-month preparation and examination process, that
+    "compliance to SOC 2 is a company-wide status, not just one that applies to a
+    specific product", and that it intends to repeat the examination annually.'
+  url: https://www.everstream.ai/articles/everstreams-new-soc-2-compliance-enhances-supply-chain-security/
+  caveat: Self-published claim. No trust center, no attestation portal, and no public
+    report request flow was found; the SOC 2 report itself is not publicly available.
+- id: cybervadis
+  conforms: partial
+  evidence: The same article reports a Cybervadis third-party security screening score
+    of 901 out of 1000, performed at a customer's request.
+  url: https://www.everstream.ai/articles/everstreams-new-soc-2-compliance-enhances-supply-chain-security/
+- id: iso-27001
+  conforms: false
+  evidence: No ISO 27001 claim found on any Everstream Analytics page. (Note — search
+    engines conflate this company with Everstream Solutions LLC, everstream.net, an
+    unrelated US fiber network operator that does publish SOC 1/SOC 2/HIPAA claims.
+    Those certifications belong to that company, not to Everstream Analytics.)
+- id: gdpr
+  conforms: partial
+  evidence: A privacy policy is published at https://www.everstream.ai/privacy-policy/
+    and the company operates an EU region (eu1.apps.everstream.ai, eaprod01euw1) and
+    markets EU regulatory compliance products (German LkSG, EU CSDDD), but no explicit
+    GDPR compliance statement or DPA link was located.
+  url: https://www.everstream.ai/privacy-policy/
+- id: oauth2
+  conforms: true
+  evidence: Auth0-fronted OAuth 2.0 authorization code flow with PKCE (S256) observed
+    on the customer application; see authentication/everstream-analytics-authentication.yml.
+- id: oidc
+  conforms: true
+  evidence: https://riskpulse-prod.us.auth0.com/.well-known/openid-configuration returns
+    a valid OpenID Connect Discovery 1.0 document (HTTP 200).
+- id: rfc8414-oauth-authorization-server-metadata
+  conforms: partial
+  evidence: Served at https://m365-mcp.everstream.ai/.well-known/oauth-authorization-server
+    (HTTP 200) — for the Microsoft 365 MCP relay only, not for the platform API.
+- id: rfc9728-oauth-protected-resource-metadata
+  conforms: partial
+  evidence: Served at https://m365-mcp.everstream.ai/.well-known/oauth-protected-resource
+    (HTTP 200) — for the Microsoft 365 MCP relay only, not for the platform API.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returns 404 on www.everstream.ai, us1.apps.everstream.ai
+    and knowledge.everstream.ai.
+- id: rfc8615-well-known-api-catalog
+  conforms: false
+  evidence: /.well-known/api-catalog returns 404 on every probed host.
+- id: openapi
+  conforms: false
+  evidence: See contract_discovery below — no OpenAPI or Swagger document found on any
+    host.
+- id: asyncapi
+  conforms: false
+  evidence: Webhooks are advertised in prose on the Insights-to-Action page but no
+    AsyncAPI document or public event catalog is published.
+- id: a2a
+  conforms: false
+  evidence: /.well-known/agent-card.json and /.well-known/agent.json return 404 on every
+    real host; portal.everstream.ai answers 200 with an HTML SPA shell and is rejected.
+- id: rfc9457-problem-details
+  conforms: unknown
+  evidence: No public spec or error reference to evaluate.
+contract_discovery:
+  performed: '2026-08-04'
+  result: none
+  summary: 'Everstream Analytics publishes no machine-readable API contract of any kind
+    in public. The API exists and is sold — the Insights-to-Action page names a Reveal
+    API and an Explore API — but every reference surface is behind customer
+    authentication (knowledge.everstream.ai articles, portal.usepylon.com/everstream-analytics
+    customer portal).'
+  hosts_enumerated_via: certificate transparency (api.certspotter.com)
+  probes:
+  - target: https://int.us1.apps.everstream.ai
+    paths:
+    - /openapi.json
+    - /openapi.yaml
+    - /swagger.json
+    - /v1/openapi.json
+    - /swagger/v1/swagger.json
+    - /api/openapi.json
+    - /api-docs
+    - /docs
+    - /redoc
+    - /health
+    - /v1
+    - /api
+    status: 404
+    body: '{"message":"Not Found"}'
+    note: AWS API Gateway (apigw-requestid response header). Confirms an integration
+      API host exists; no unauthenticated route or spec is exposed.
+  - target: https://www.everstream.ai
+    paths:
+    - /openapi.json
+    - /swagger.json
+    - /api-docs
+    - /llms.txt
+    status: 404
+  - target: https://us1.apps.everstream.ai
+    paths:
+    - /openapi.json
+    - /swagger.json
+    - /api-docs
+    - /llms.txt
+    status: 404
+  - target: https://knowledge.everstream.ai
+    paths:
+    - /openapi.json
+    - /swagger.json
+    - /api-docs
+    status: 404
+  - target: https://portal.everstream.ai
+    status: 200
+    rejected: true
+    note: Pylon SPA catch-all — identical HTML shell for every path. All 200s rejected
+      as false positives.
+  - target: graphql introspection
+    result: no /graphql surface found on any host
+  - target: MCP tools/list
+    url: https://m365-mcp.everstream.ai/mcp
+    status: 401
+    body: '{"error":"invalid_token","error_description":"Missing or malformed Authorization
+      header"}'
+    note: Auth-gated. This is a Microsoft 365 MCP relay (root page reads "Microsoft
+      365 MCP Server is running"), not an MCP interface over Everstream supply chain
+      data.
+  - target: A2A agent card
+    paths:
+    - /.well-known/agent-card.json
+    - /.well-known/agent.json
+    status: 404
+    hosts:
+    - www.everstream.ai
+    - us1.apps.everstream.ai
+    - knowledge.everstream.ai
+    - m365-mcp.everstream.ai
+  - target: third-party doc hosts
+    checked:
+    - everstream.readme.io
+    - everstream-analytics.readme.io
+    - everstream.gitbook.io
+    - everstream.apidocumentation.com
+    result: 404 / no DNS
+  - target: Postman public search
+    query: everstream
+    result: 0 workspaces, 0 collections, 0 APIs
+  - target: SAP Business Accelerator Hub
+    result: 'A published SAP integration package exists — "Integration of SAP Integrated
+      Business Planning for Supply Chain with Everstream Analytics" — but the artifacts
+      are SAP CPI integration flows, not an Everstream API contract.'
+    url: https://api.sap.com/package/IntegrationofSAPIntegratedBusinessPlanningforSupplyChainwithEverstreamAnalytics/integrationflow
+x-evidence:
+  fetched: '2026-08-04'

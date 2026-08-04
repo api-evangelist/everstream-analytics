@@ -1,0 +1,21 @@
+generated: '2026-08-04'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.everstream.ai
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 14 20:59:56 2026 GMT
+  hsts: null
+- host: int.us1.apps.everstream.ai
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Jan 22 23:59:59 2027 GMT
+  hsts: null
+domains:
+- domain: everstream.ai
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: quarantine

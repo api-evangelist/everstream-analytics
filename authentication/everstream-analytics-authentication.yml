@@ -1,0 +1,87 @@
+generated: '2026-08-04'
+method: probed
+source: live probes of app.us1.apps.everstream.ai, us1.apps.everstream.ai and the
+  Auth0 tenant riskpulse-prod.us.auth0.com
+docs: null
+notes: 'Everstream Analytics publishes no OpenAPI, so no securityScheme could be derived.
+  This profile is assembled entirely from observed, unauthenticated HTTP behaviour of
+  the production application estate plus the identity provider''s own public discovery
+  document. The platform API''s own authentication scheme (the credential a customer
+  presents to the Reveal/Explore API) is documented only behind customer login and is
+  NOT recorded here — recording it would be a guess.'
+summary:
+  types:
+  - oauth2
+  - openIdConnect
+  api_key_in: []
+  oauth2_flows:
+  - authorizationCode
+  spec_derived: false
+schemes:
+- name: everstream-platform-oidc
+  type: openIdConnect
+  applies_to: Everstream customer application (app.us1.apps.everstream.ai, us1/eu1.apps.everstream.ai)
+  provider: Auth0
+  openIdConnectUrl: https://riskpulse-prod.us.auth0.com/.well-known/openid-configuration
+  issuer: https://riskpulse-prod.us.auth0.com/
+  authorization_endpoint: https://riskpulse-prod.us.auth0.com/authorize
+  token_endpoint: https://riskpulse-prod.us.auth0.com/oauth/token
+  jwks_uri: https://riskpulse-prod.us.auth0.com/.well-known/jwks.json
+  userinfo_endpoint: https://riskpulse-prod.us.auth0.com/userinfo
+  revocation_endpoint: https://riskpulse-prod.us.auth0.com/oauth/revoke
+  device_authorization_endpoint: https://riskpulse-prod.us.auth0.com/oauth/device/code
+  flow: authorizationCode
+  pkce: S256
+  audience: https://maglev-prod/api
+  scopes_observed:
+  - openid
+  - profile
+  - email
+  - offline_access
+  mfa: true
+  mfa_endpoint: https://riskpulse-prod.us.auth0.com/mfa/challenge
+  sources:
+  - well-known/everstream-analytics-auth0-openid-configuration.json
+  evidence: 'GET https://app.us1.apps.everstream.ai/ returns HTTP 302 to
+    https://riskpulse-prod.us.auth0.com/authorize?audience=https%3A%2F%2Fmaglev-prod%2Fapi&scope=openid+profile+email+offline_access&response_type=code&code_challenge_method=S256
+    (probed 2026-08-04).'
+- name: everstream-legacy-app-login
+  type: http
+  scheme: form-login
+  applies_to: us1.apps.everstream.ai (legacy application login)
+  login_url: https://us1.apps.everstream.ai/auth/
+  linked_from: https://www.everstream.ai/login-page/
+  evidence: 'GET https://us1.apps.everstream.ai/ returns HTTP 200 at /auth/?next=%2F
+    with an HTML login form titled "Login | Everstream" (probed 2026-08-04).'
+- name: m365-mcp-oauth2
+  type: oauth2
+  applies_to: m365-mcp.everstream.ai (Microsoft 365 MCP relay — internal productivity
+    tooling, NOT the Everstream platform API)
+  issuer: https://m365-mcp.everstream.ai
+  authorization_endpoint: https://m365-mcp.everstream.ai/authorize
+  token_endpoint: https://m365-mcp.everstream.ai/token
+  flow: authorizationCode
+  pkce: S256
+  dynamic_client_registration: false
+  token_endpoint_auth_methods_supported:
+  - none
+  protected_resource: https://m365-mcp.everstream.ai/mcp
+  scopes_note: scopes_supported are Microsoft Graph scopes, not Everstream data scopes
+  sources:
+  - well-known/everstream-analytics-m365-mcp-oauth-authorization-server.json
+  - well-known/everstream-analytics-m365-mcp-oauth-protected-resource.json
+  evidence: 'POST https://m365-mcp.everstream.ai/mcp with a tools/list JSON-RPC body
+    returns HTTP 401 {"error":"invalid_token","error_description":"Missing or malformed
+    Authorization header"} (probed 2026-08-04).'
+gaps:
+- No public authentication reference page for the platform API. The Insights-to-Action
+  page advertises API connectivity, webhooks and SFTP but names no credential type,
+  header, token endpoint or key-issuance flow.
+- No developer portal, no self-service credential issuance, no public API key management.
+x-evidence:
+  fetched: '2026-08-04'
+  hosts:
+  - https://app.us1.apps.everstream.ai
+  - https://us1.apps.everstream.ai
+  - https://m365-mcp.everstream.ai
+  - https://riskpulse-prod.us.auth0.com

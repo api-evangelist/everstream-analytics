@@ -1,0 +1,62 @@
+generated: '2026-08-04'
+method: searched
+source: https://www.everstream.ai/platform/insights-to-action/
+spec_type: none
+notes: 'Everstream Analytics advertises an event-driven delivery channel but publishes
+  no AsyncAPI document, no event catalog, and no webhook reference. This artifact
+  records the webhook surface exactly as the provider describes it in prose — nothing
+  is inferred about payload shape, event names, headers, signing, or retry behaviour,
+  because none of that is published. Everstream''s "Insights-to-Action" page lists
+  three integration transports; webhooks is one of them.'
+event_surface:
+  advertised: true
+  spec_published: false
+  catalog_published: false
+transports:
+- name: API connectivity
+  description: Seamless real-time data exchange with bidirectional flows.
+  kind: request-response
+  source: https://www.everstream.ai/platform/insights-to-action/
+- name: Webhooks
+  description: Event-driven notifications for immediate response to critical changes.
+  kind: push
+  source: https://www.everstream.ai/platform/insights-to-action/
+- name: SFTP
+  description: Secure file transfers for scheduled batch processing of large datasets.
+  kind: batch
+  source: https://www.everstream.ai/platform/insights-to-action/
+event_domains_note: These are the risk-event categories Everstream says it pushes; they
+  are product descriptions from the platform pages, NOT documented webhook event type
+  names.
+event_domains_described:
+- domain: incident risk
+  description: Real-time incident risk alerts for monitored entities (suppliers, facilities)
+    delivered via the Reveal API.
+  source: https://www.everstream.ai/platform/insights-to-action/
+- domain: location and lane risk
+  description: Real-time incident risk for locations and lanes, delivered into planning
+    systems.
+  source: https://www.everstream.ai/platform/insights-to-action/
+- domain: shipment risk
+  description: Real-time incident risk for shipments in transit, delivered into visibility
+    and TMS systems.
+  source: https://www.everstream.ai/platform/insights-to-action/
+- domain: global monitoring alerts
+  description: Targeted alerts from 24/7 global monitoring of disruptions across plan,
+    source, make and deliver.
+  source: https://www.everstream.ai/platform/global-monitoring/
+gaps:
+- No AsyncAPI (2.x or 3.x) document published.
+- No named event types, no payload schemas, no example payloads.
+- No documented signature/verification scheme for webhook authenticity.
+- No documented retry, ordering or delivery-guarantee semantics.
+- No subscription management API or UI documented publicly.
+x-evidence:
+  fetched: '2026-08-04'
+  urls:
+  - url: https://www.everstream.ai/platform/insights-to-action/
+    http_status: 200
+  - url: https://www.everstream.ai/integrations/
+    http_status: 200
+  - url: https://www.everstream.ai/platform/global-monitoring/
+    http_status: 200

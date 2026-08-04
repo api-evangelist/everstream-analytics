@@ -1,0 +1,75 @@
+generated: '2026-08-04'
+method: searched
+source: everstream.ai platform/integration pages + live probes
+notes: 'Cross-cutting request/response semantics could not be derived: Everstream Analytics
+  publishes no OpenAPI and no public API reference. Every field below is either an
+  observed fact or an explicit "not published". Nothing is inferred. In particular
+  there is NO evidence of an idempotency contract, so no Idempotency pointer is wired
+  in apis.yml.'
+authentication:
+  style: not published for the platform API
+  application_layer: OAuth 2.0 authorization code + PKCE via Auth0 (riskpulse-prod tenant),
+    audience https://maglev-prod/api
+  detail: authentication/everstream-analytics-authentication.yml
+idempotency:
+  supported: unknown
+  documented: false
+  header: null
+  evidence: No idempotency key, header, or retry-safety statement appears on any public
+    Everstream page. Not claimed, not observed.
+pagination:
+  documented: false
+  style: null
+versioning:
+  documented: false
+  scheme: null
+  evidence: No version segment, header, or date-based version scheme is published. The
+    integration host int.us1.apps.everstream.ai returns 404 for /v1 and /api.
+field_expansion:
+  documented: false
+metadata:
+  documented: false
+request_tracing:
+  documented: false
+  observed: 'AWS API Gateway emits an `apigw-requestid` response header on int.us1.apps.everstream.ai
+    (observed on a 404). This is infrastructure behaviour, not a documented tracing
+    contract.'
+error_envelope:
+  documented: false
+  observed: 'The integration host returns `{"message":"Not Found"}` on an unrouted
+    path — the AWS API Gateway default, not a documented error envelope. Not RFC 9457
+    problem+json.'
+rate_limiting:
+  documented: false
+  headers: null
+transports:
+  description: Everstream describes three delivery transports for risk intelligence.
+  modes:
+  - api: Real-time bidirectional data exchange (Reveal API for incident risk, Explore
+      API for planning data).
+  - webhooks: Event-driven push notifications.
+  - sftp: Scheduled batch file transfer for large datasets.
+  source: https://www.everstream.ai/platform/insights-to-action/
+regions:
+  observed:
+  - id: us1
+    hosts:
+    - us1.apps.everstream.ai
+    - int.us1.apps.everstream.ai
+    - app.us1.apps.everstream.ai
+    - reports.us1.apps.everstream.ai
+  - id: eu1
+    hosts:
+    - eu1.apps.everstream.ai
+    - int.eu1.apps.everstream.ai
+    - app.eu1.apps.everstream.ai
+    - reports.eu1.apps.everstream.ai
+  note: Region split observed via certificate transparency and live probes; data-residency
+    policy is not published.
+cross_links:
+  authentication: authentication/everstream-analytics-authentication.yml
+  webhooks: asyncapi/everstream-analytics-webhooks.yml
+  lifecycle: lifecycle/everstream-analytics-lifecycle.yml
+  conformance: conformance/everstream-analytics-conformance.yml
+x-evidence:
+  fetched: '2026-08-04'

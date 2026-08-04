@@ -1,23 +1,131 @@
 aid: everstream-analytics
 name: Everstream Analytics
-description: 'Everstream Analytics is a company surfaced via the API Evangelist harvest backlog (source:
-  secondary-market) and added to the network as a stub for full-pipeline profiling.'
+description: 'Everstream Analytics is a supply chain risk analytics and intelligence
+  company whose platform — grown out of DHL''s innovation labs — continuously monitors
+  global supply networks and scores risk across suppliers, sites, materials, lanes
+  and shipments. The platform spans global monitoring and alerting, risk assessment
+  and scoring, sub-tier and n-tier network mapping, applied meteorology and weather
+  intelligence, and regulatory/ESG compliance screening (LkSG, CSDDD, UFLPA, CTPAT).
+  Risk intelligence is delivered into customer systems through an Insights-to-Action
+  integration layer offering API connectivity with bidirectional flows, event-driven
+  webhooks, and SFTP batch transfer, with named connectors into SAP Integrated Business
+  Planning, SAP Business Network for Logistics, Oracle TMS, Kinaxis and other planning,
+  sourcing and visibility systems. The API surface (marketed as the Reveal API and
+  Explore API) is documented for customers behind authentication; no public OpenAPI,
+  developer portal or SDK has been published as of this profile.'
+image: https://www.everstream.ai/wp-content/uploads/2022/06/cropped-everstream-favicon-270x270.png
 url: https://raw.githubusercontent.com/api-evangelist/everstream-analytics/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
+x-tier: profiled
+x-tier-reason: enrichment-pipeline
 specificationVersion: '0.20'
 created: '2026-08-04'
 modified: '2026-08-04'
 tags:
 - Company
-apis: []
+- Supply Chain
+- Supply Chain Risk
+- Risk Management
+- Logistics
+- Analytics
+- Weather Intelligence
+- Procurement
+- Compliance
+- Artificial Intelligence
+apis:
+- aid: everstream-analytics-platform-api
+  name: Everstream Analytics Platform API
+  description: 'The Everstream Analytics platform API surface (marketed as the Reveal
+    API for real-time incident risk on entities, locations and lanes, and the Explore
+    API for long-range planning data). It powers the Insights-to-Action integration
+    layer that pushes supply chain risk intelligence into customer planning, procurement,
+    ERP, TMS and visibility systems. Access is contractual: the reference documentation
+    lives behind customer authentication in the Everstream knowledge base and customer
+    portal, and no public OpenAPI, Swagger, GraphQL or MCP contract is published.'
+  humanURL: https://www.everstream.ai/platform/insights-to-action/
+  baseURL: https://int.us1.apps.everstream.ai
+  tags:
+  - Supply Chain Risk
+  - Risk Management
+  - Analytics
+  - Logistics
+  - Webhooks
+  properties:
+  - type: Website
+    url: https://www.everstream.ai/platform/insights-to-action/
+  - type: Integrations
+    url: https://www.everstream.ai/integrations/
+  - type: Authentication
+    url: authentication/everstream-analytics-authentication.yml
+  - type: Webhooks
+    url: asyncapi/everstream-analytics-webhooks.yml
+  - type: Login
+    url: https://us1.apps.everstream.ai/auth
+  x-evidence:
+    fetched: '2026-08-04'
+    baseURL_note: 'Probed 2026-08-04: https://int.us1.apps.everstream.ai/ returns HTTP
+      404 with content-type application/json and an `apigw-requestid` response header,
+      identifying an AWS API Gateway integration host on the Everstream production
+      estate (us1 and eu1 regions both respond identically). No public route, spec
+      or reference is published, so the host is recorded as the observed integration
+      base URL, not a documented one.'
+    contract_discovery: No OpenAPI/Swagger/GraphQL/AsyncAPI found; the full probe log
+      is in conformance/everstream-analytics-conformance.yml.
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/everstream-analytics-domain-security.yml
 - type: Website
+  url: https://www.everstream.ai/
+- type: Company
+  url: https://www.everstream.ai/company/about-everstream/
+- type: Blog
+  url: https://www.everstream.ai/blog/
+- type: BlogRSS
+  url: https://www.everstream.ai/feed/
+- type: Integrations
+  url: https://www.everstream.ai/integrations/
+- type: HelpCenter
+  url: https://knowledge.everstream.ai/
+- type: Support
+  url: https://www.everstream.ai/company/contact-us/
+- type: GitHubOrganization
+  url: https://github.com/Everstream-Analytics
+- type: Login
+  url: https://us1.apps.everstream.ai/auth
+- type: TermsOfService
+  url: https://www.everstream.ai/terms-and-conditions/
+- type: ServiceAgreement
+  url: https://www.everstream.ai/everstream-analytics-service-agreement/
+- type: PrivacyPolicy
+  url: https://www.everstream.ai/privacy-policy/
+- type: Compliance
+  url: https://www.everstream.ai/articles/everstreams-new-soc-2-compliance-enhances-supply-chain-security/
+- type: Conformance
+  url: conformance/everstream-analytics-conformance.yml
+- type: Authentication
+  url: authentication/everstream-analytics-authentication.yml
+- type: WellKnown
+  url: well-known/everstream-analytics-well-known.yml
+- type: Webhooks
+  url: asyncapi/everstream-analytics-webhooks.yml
+- type: Conventions
+  url: conventions/everstream-analytics-conventions.yml
+- type: Lifecycle
+  url: lifecycle/everstream-analytics-lifecycle.yml
+- type: Packages
+  url: packages/everstream-analytics-packages.yml
+- type: LLMsTxt
+  url: llms/everstream-analytics-llms.txt
+- type: SecondaryMarket
   url: https://forgeglobal.com/everstream-analytics_stock/
+x-enrichment:
+  date: '2026-08-04'
+  status: enriched
+  artifacts_added: 13
+  pass: local-v1
