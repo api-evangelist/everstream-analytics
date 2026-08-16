@@ -2,10 +2,24 @@
   "repo": "everstream-analytics",
   "feeds": [
     {
+      "source": "https://www.everstream.ai/feed/",
+      "feed_url": "https://www.everstream.ai/feed/",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://www.everstream.ai/de/feed/",
+      "feed_url": "https://www.everstream.ai/de/feed/",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
       "source": "https://www.everstream.ai/company/about-everstream/",
       "feed_url": "https://www.everstream.ai/feed/",
       "title": "",
-      "saved": 1,
+      "saved": 0,
       "method": "discovered"
     },
     {
@@ -16,6 +30,6 @@
       "method": "discovered"
     }
   ],
-  "post_count": 1,
-  "fetched": "2026-08-06T14:08:46Z"
+  "post_count": 20,
+  "fetched": "2026-08-15T12:22:01Z"
 }
