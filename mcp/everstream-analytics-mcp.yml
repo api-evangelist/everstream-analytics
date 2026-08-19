@@ -2,25 +2,22 @@ generated: '2026-08-04'
 method: probed
 status: not-published
 source: live probe of https://m365-mcp.everstream.ai/mcp
-notes: 'Everstream Analytics does NOT publish an MCP server over its supply chain risk
-  data. No MCP endpoint, no agent tooling, and no agent documentation exists for the
-  Reveal or Explore API.
+notes: 'Everstream Analytics does NOT publish an MCP server over its supply chain risk data. No MCP endpoint,
+  no agent tooling, and no agent documentation exists for the Reveal or Explore API.
 
-  A real, publicly reachable MCP server does run on the everstream.ai estate at
-  m365-mcp.everstream.ai — but it is a Microsoft 365 MCP relay (the root page returns
-  the plain-text banner "Microsoft 365 MCP Server is running", and its protected-resource
-  metadata advertises Microsoft Graph scopes: Mail.*, Calendars.*, Files.*, Chat.*,
-  Team*, Sites.*). It is internal productivity tooling that happens to be internet-facing,
+  A real, publicly reachable MCP server does run on the everstream.ai estate at m365-mcp.everstream.ai
+  — but it is a Microsoft 365 MCP relay (the root page returns the plain-text banner "Microsoft 365 MCP
+  Server is running", and its protected-resource metadata advertises Microsoft Graph scopes: Mail.*, Calendars.*,
+  Files.*, Chat.*, Team*, Sites.*). It is internal productivity tooling that happens to be internet-facing,
   not an agent interface to any Everstream product.
 
-  It is recorded here so the finding is not lost, but deliberately NOT wired as a
-  `type: MCPServer` pointer in apis.yml. The mcp_server_present and agent-readiness
-  mcp_server checks mean "this provider exposes its API to agents over MCP"; crediting
-  Everstream for a Microsoft 365 relay would award those points for something that is
-  not their API surface.
+  It is recorded here so the finding is not lost, but deliberately NOT wired as a `type: MCPServer` pointer
+  in apis.yml. The mcp_server_present and agent-readiness mcp_server checks mean "this provider exposes
+  its API to agents over MCP"; crediting Everstream for a Microsoft 365 relay would award those points
+  for something that is not their API surface.
 
-  No candidate tool list was derived either: deriving one requires an OpenAPI to derive
-  from, and Everstream publishes none.'
+  No candidate tool list was derived either: deriving one requires an OpenAPI to derive from, and Everstream
+  publishes none.'
 server:
   name: null
   transport: null
@@ -42,10 +39,9 @@ observed_non_product_server:
   tools_list:
     attempted: true
     http_status: 401
-    body: '{"error":"invalid_token","error_description":"Missing or malformed Authorization
-      header"}'
-    note: Live tool schemas require an authenticated introspection; no anonymous tool
-      list is published. No llms.txt tool list exists to fall back to.
+    body: '{"error":"invalid_token","error_description":"Missing or malformed Authorization header"}'
+    note: Live tool schemas require an authenticated introspection; no anonymous tool list is published.
+      No llms.txt tool list exists to fall back to.
   paths_probed:
   - path: /
     method: POST
@@ -64,5 +60,9 @@ gaps:
 - No agent skills, no llms.txt tool list, no agent card.
 x-evidence:
   fetched: '2026-08-04'
-  discovery: host found via certificate transparency (api.certspotter.com, everstream.ai
-    + subdomains)
+  discovery: host found via certificate transparency (api.certspotter.com, everstream.ai + subdomains)
+deployment:
+  mode: none
+  verified: derived
+  checked: '2026-08-12'
+  source: catalog MCP census
