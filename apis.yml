@@ -50,6 +50,12 @@ apis:
   - Risk Management
   - Analytics
   - Logistics
+  - Webhook
+  tags_raw:
+  - Supply Chain Risk
+  - Risk Management
+  - Analytics
+  - Logistics
   - Webhooks
   properties:
   - type: Website
