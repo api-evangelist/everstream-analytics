@@ -13,6 +13,17 @@ description: 'Everstream Analytics is a supply chain risk analytics and intellig
   sourcing and visibility systems. The API surface (marketed as the Reveal API and
   Explore API) is documented for customers behind authentication; no public OpenAPI,
   developer portal or SDK has been published as of this profile.'
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://www.everstream.ai/wp-content/uploads/2022/06/cropped-everstream-favicon-270x270.png
 url: https://raw.githubusercontent.com/api-evangelist/everstream-analytics/refs/heads/main/apis.yml
 x-type: company
