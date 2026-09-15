@@ -1,18 +1,16 @@
 aid: everstream-analytics
 name: Everstream Analytics
-description: 'Everstream Analytics is a supply chain risk analytics and intelligence
-  company whose platform — grown out of DHL''s innovation labs — continuously monitors
-  global supply networks and scores risk across suppliers, sites, materials, lanes
-  and shipments. The platform spans global monitoring and alerting, risk assessment
-  and scoring, sub-tier and n-tier network mapping, applied meteorology and weather
-  intelligence, and regulatory/ESG compliance screening (LkSG, CSDDD, UFLPA, CTPAT).
-  Risk intelligence is delivered into customer systems through an Insights-to-Action
-  integration layer offering API connectivity with bidirectional flows, event-driven
-  webhooks, and SFTP batch transfer, with named connectors into SAP Integrated Business
-  Planning, SAP Business Network for Logistics, Oracle TMS, Kinaxis and other planning,
-  sourcing and visibility systems. The API surface (marketed as the Reveal API and
-  Explore API) is documented for customers behind authentication; no public OpenAPI,
-  developer portal or SDK has been published as of this profile.'
+description: Everstream Analytics is a supply chain risk analytics and intelligence company whose platform
+  — grown out of DHL's innovation labs — continuously monitors global supply networks and scores risk
+  across suppliers, sites, materials, lanes and shipments. The platform spans global monitoring and alerting,
+  risk assessment and scoring, sub-tier and n-tier network mapping, applied meteorology and weather intelligence,
+  and regulatory/ESG compliance screening (LkSG, CSDDD, UFLPA, CTPAT). Risk intelligence is delivered
+  into customer systems through an Insights-to-Action integration layer offering API connectivity with
+  bidirectional flows, event-driven webhooks, and SFTP batch transfer, with named connectors into SAP
+  Integrated Business Planning, SAP Business Network for Logistics, Oracle TMS, Kinaxis and other planning,
+  sourcing and visibility systems. The API surface (marketed as the Reveal API and Explore API) is documented
+  for customers behind authentication; no public OpenAPI, developer portal or SDK has been published as
+  of this profile.
 deliveryModel:
   model: saas
   open_source: false
@@ -58,15 +56,14 @@ tags:
 - Compliance
 - Artificial Intelligence
 apis:
-- aid: everstream-analytics-platform-api
+- aid: everstream-analytics:everstream-analytics-platform-api
   name: Everstream Analytics Platform API
-  description: 'The Everstream Analytics platform API surface (marketed as the Reveal
-    API for real-time incident risk on entities, locations and lanes, and the Explore
-    API for long-range planning data). It powers the Insights-to-Action integration
-    layer that pushes supply chain risk intelligence into customer planning, procurement,
-    ERP, TMS and visibility systems. Access is contractual: the reference documentation
-    lives behind customer authentication in the Everstream knowledge base and customer
-    portal, and no public OpenAPI, Swagger, GraphQL or MCP contract is published.'
+  description: 'The Everstream Analytics platform API surface (marketed as the Reveal API for real-time
+    incident risk on entities, locations and lanes, and the Explore API for long-range planning data).
+    It powers the Insights-to-Action integration layer that pushes supply chain risk intelligence into
+    customer planning, procurement, ERP, TMS and visibility systems. Access is contractual: the reference
+    documentation lives behind customer authentication in the Everstream knowledge base and customer portal,
+    and no public OpenAPI, Swagger, GraphQL or MCP contract is published.'
   humanURL: https://www.everstream.ai/platform/insights-to-action/
   baseURL: https://int.us1.apps.everstream.ai
   tags:
@@ -94,14 +91,12 @@ apis:
     url: https://us1.apps.everstream.ai/auth
   x-evidence:
     fetched: '2026-08-04'
-    baseURL_note: 'Probed 2026-08-04: https://int.us1.apps.everstream.ai/ returns HTTP
-      404 with content-type application/json and an `apigw-requestid` response header,
-      identifying an AWS API Gateway integration host on the Everstream production
-      estate (us1 and eu1 regions both respond identically). No public route, spec
-      or reference is published, so the host is recorded as the observed integration
-      base URL, not a documented one.'
-    contract_discovery: No OpenAPI/Swagger/GraphQL/AsyncAPI found; the full probe log
-      is in conformance/everstream-analytics-conformance.yml.
+    baseURL_note: 'Probed 2026-08-04: https://int.us1.apps.everstream.ai/ returns HTTP 404 with content-type
+      application/json and an `apigw-requestid` response header, identifying an AWS API Gateway integration
+      host on the Everstream production estate (us1 and eu1 regions both respond identically). No public
+      route, spec or reference is published, so the host is recorded as the observed integration base
+      URL, not a documented one.'
+    contract_discovery: No OpenAPI/Swagger/GraphQL/AsyncAPI found; the full probe log is in conformance/everstream-analytics-conformance.yml.
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
