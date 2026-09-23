@@ -1,0 +1,27 @@
+# Front Door AI Index — everstream-analytics — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: everstream-analytics
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.everstream.ai
+  final_host: www.everstream.ai
+  ownership: own
+  owner: everstream-analytics
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 7
+  host_score: 7
+  density: 6.04
+  words: 1158
+  tiers:
+    agentic: 0
+    core: 7
+    model: 0
+  ambiguous: 9
+  top_terms:
+    AI: 7
+    intelligence: 5
+    predictive: 4
