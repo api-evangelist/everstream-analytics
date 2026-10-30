@@ -64,5 +64,102 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Everstream Analytics is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://forgeglobal.com/everstream-analytics_stock/
+Everstream Analytics is a supply chain risk analytics and intelligence company whose platform — grown out of DHL's innovation labs — continuously monitors global supply networks and scores risk across suppliers, sites, materials, lanes and shipments. The platform spans global monitoring and alerting, risk assessment and scoring, sub-tier and n-tier network mapping, applied meteorology and weather intelligence, and regulatory/ESG compliance screening (LkSG, CSDDD, UFLPA, CTPAT). Risk intelligence is delivered into customer systems through an Insights-to-Action integration layer offering API connectivity with bidirectional flows, event-driven webhooks, and SFTP batch transfer, with named connectors into SAP Integrated Business Planning, SAP Business Network for Logistics, Oracle TMS, Kinaxis and other planning, sourcing and visibility systems. The API surface (marketed as the Reveal API and Explore API) is documented for customers behind authentication; no public OpenAPI, developer portal or SDK has been published as of this profile.
+
+**Areas:** Company · Supply Chain · Supply Chain Risk · Risk Management · Logistics · Analytics · Weather Intelligence · Procurement · Compliance · Artificial Intelligence
+
+## Everstream Analytics on APIs.io
+
+Everything profiled for Everstream Analytics is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/everstream-analytics/](https://apis.io/providers/everstream-analytics/)** — or go straight to one of the APIs or properties below.
+
+### APIs (1)
+
+- [Everstream Analytics Platform API](https://apis.io/apis/everstream-analytics/everstream-analytics-platform-api/) — The Everstream Analytics platform API surface (marketed as the Reveal API for real-time incident risk on entities, locations and lanes, and the Explore API…
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Everstream Analytics Webhooks](https://apis.io/asyncapis/everstream-analytics/everstream-analytics-webhooks/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [everstream-analytics-mcp.yml](https://apis.io/servers/everstream-analytics/everstream-analytics-mcp-yml/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Everstream Analytics Authentication](https://apis.io/security/everstream-analytics/everstream-analytics-authentication/)
+- [Everstream Analytics Domain Security](https://apis.io/security/everstream-analytics/everstream-analytics-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.everstream.ai/)
+- [Support](https://www.everstream.ai/company/contact-us/)
+- [Blog](https://www.everstream.ai/blog/)
+- [Compliance](https://www.everstream.ai/articles/everstreams-new-soc-2-compliance-enhances-supply-chain-security/)
+- [Terms of service](https://www.everstream.ai/terms-and-conditions/)
+- [Privacy policy](https://www.everstream.ai/privacy-policy/)
+- [GitHub](https://github.com/Everstream-Analytics)
+
+## API Evangelist rating
+
+**Kin Score 32.6** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 39.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 19.0 |
+| Access clarity | 35.5 |
+
+**Agent readiness 19.8** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | yes |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 27.3** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/everstream-analytics/](https://apis.io/providers/everstream-analytics/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Everstream Analytics: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/everstream-analytics/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
